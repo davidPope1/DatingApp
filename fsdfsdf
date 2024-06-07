@@ -1,0 +1,21 @@
+[33mcommit 2aa9de8080f048200d5eeead9fd3bbfb40144da1[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: davidPope1 <david_1565@yahoo.com>
+Date:   Tue Jun 4 11:34:35 2024 +0300
+
+    Recommit
+
+M	API/Controllers/AccountController.cs
+M	API/DTOs/RegisterDto.cs
+M	API/DTOs/UserDto.cs
+M	API/Helpers/AutoMapperProfiles.cs
+A	client/src/app/_forms/date-picker/date-picker.component.css
+A	client/src/app/_forms/date-picker/date-picker.component.html
+A	client/src/app/_forms/date-picker/date-picker.component.ts
+A	client/src/app/_forms/text-input/text-input.component.css
+A	client/src/app/_forms/text-input/text-input.component.html
+A	client/src/app/_forms/text-input/text-input.component.ts
+M	client/src/app/_modules/shared.module.ts
+M	client/src/app/app.module.ts
+M	client/src/app/members/photo-editor/photo-editor.component.ts
+M	client/src/app/register/register.component.html
+M	client/src/app/register/register.component.ts
