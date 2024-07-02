@@ -23,7 +23,6 @@ namespace API.Controllers
             _uow = uow;
             _photoService = photoService;
             _mapper = mapper;
-
         }
 
         [HttpGet]
@@ -45,10 +44,13 @@ namespace API.Controllers
             return Ok(users);
         }
 
-        [HttpGet("{username}")] // api/users/2
+        [HttpGet("{username}")]
         public async Task<ActionResult<MemberDto>> GetUser(string username)
         {
-            return await _uow.UserRepository.GetMemberAsync(username);
+            var currentUsername = User.GetUsername();
+            return await _uow.UserRepository.GetMemberAsync(username,
+                isCurrentUser: currentUsername == username
+            );
         }
 
         [HttpPut]
@@ -82,7 +84,7 @@ namespace API.Controllers
                 PublicId = result.PublicId
             };
 
-            if (user.Photos.Count == 0) photo.IsMain = true;
+            // if (user.Photos.Count == 0) photo.IsMain = true;
 
             user.Photos.Add(photo);
 
@@ -121,7 +123,9 @@ namespace API.Controllers
         {
             var user = await _uow.UserRepository.GetUserByUsernameAsync(User.GetUsername());
 
-            var photo = user.Photos.FirstOrDefault(x => x.Id == photoId);
+            //var photo = user.Photos.FirstOrDefault(x => x.Id == photoId);
+
+            var photo = await _uow.PhotoRepository.GetPhotoById(photoId);
 
             if (photo == null) return NotFound();
 

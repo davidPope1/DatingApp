@@ -1,6 +1,7 @@
 using API.DTOs;
 using API.Entities;
 using API.Helpers;
+using Microsoft.AspNetCore.Mvc;
 
 namespace API.Interfaces
 {
@@ -13,5 +14,7 @@ namespace API.Interfaces
         Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams);
         Task<MemberDto> GetMemberAsync(string username);
         Task<string> GetUserGender(string username);
+        Task<MemberDto> GetMemberAsync(string username, bool isCurrentUser);
+        Task<AppUser> GetUserByPhotoId(int photoId);
     }
 }
