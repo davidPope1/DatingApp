@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: ./API
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000" # Expose port 80 for the API
+    volumes:
+      - sqlite_data:/app/datingapp.db # Mount the SQLite database
+    environment:
+      - DATABASE_FILE=/app/datingapp.db # Environment variable for database file
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "8000:80" # Expose port 8000 for the client
+    depends_on:
+      - api
+
+volumes:
+  sqlite_data:
